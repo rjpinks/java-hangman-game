@@ -42,30 +42,24 @@ public class Phrase {
     }
 
     void searcher(String target) {
-        System.out.println("SEARCHER ACTIVATED");
         boolean checker = false;
         for (int i = 0; i < this.splitPhrase.length; i++) {
-            System.out.println("FOR ACTIVATED i =" + i + " target = " + target.toLowerCase() + " this.splitPhrase[i] = "
-                    + this.splitPhrase[i].toLowerCase());
             if (target.toLowerCase().equals(this.splitPhrase[i].toLowerCase())) {
-                System.out.println("FIRST IF ACTIVATED  ");
                 StringBuilder stringBuilder = new StringBuilder();
                 checker = true;
                 this.splitCoded[i] = this.splitPhrase[i];
+
                 // this.codedPhrase = String.join(this.codedPhrase);
-                // This code returned an empty string bc 'it expects an iterable of strings, not
-                // a stingle string'
+                    // This code returned an empty string bc 'it expects an iterable of strings, not a stingle string'
 
                 // Use StringBuilder to make a new string
                 for (String coded : this.splitCoded) {
                     stringBuilder.append(coded);
                 }
                 this.codedPhrase = stringBuilder.toString();
-                System.out.println("codedPhrase = " + this.codedPhrase);
             }
         }
         if (checker == false) {
-            System.out.println("SECOND IF ACTIVATED");
             this.chances--;
         }
     }
@@ -171,8 +165,6 @@ public class Phrase {
             System.out.println("Choose a letter!");
             String userInput = scanner.nextLine();
             int userLength = userInput.length();
-            System.out.println("userInput = " + userInput);
-            System.out.println("userLength =" + userLength);
 
             if (userLength == 1) {
                 // Search the array for the input
@@ -204,7 +196,8 @@ public class Phrase {
         }
         // See if they want to play again
         if (this.chances > 0) {
-            System.out.println("Congratulations!");
+            System.out.println(this.codedPhrase);
+            System.out.println("Congratulations! You won!");
         } else {
             System.out.println("The sun sets heavy on this western town");
         }
