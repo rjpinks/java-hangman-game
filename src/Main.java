@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ class Main {
                 "_ ___ ____ ______"
         };
 
-        // Obtains a random string
+        // Obtains a random string and populates the split strings
         Random rando = new Random();
         int phraseIndex = rando.nextInt(possiblePhrases.length);
 
@@ -37,33 +38,44 @@ class Main {
         }
         String randomPhrase = possiblePhrases[phraseIndex];
 
-        // create a Phrase object
+        // Create a Phrase object
         Phrase gamePhrase = new Phrase(randomPhrase);
         gamePhrase.codedPhrase = possiblePhrases[phraseIndex + 1];
+        gamePhrase.splitter();
 
         // Game begins
-            if (gamePhrase.chances == 6) {
-                System.out.println("_______");
-                System.out.println("|     |");
-                System.out.println("|     ");
-                System.out.println("|   ");
-                System.out.println("|    ");
-                System.out.println("|");
+        Scanner scanner = new Scanner(System.in);
+        while (gamePhrase.chances > 0 || Arrays.equals(gamePhrase.splitPhrase, gamePhrase.splitCoded) == true) {
+            gamePhrase.printer(gamePhrase.chances);
 
-                // Obtain a single letter from a user
-                System.out.println("Choose a letter!");
-                Scanner scanner = new Scanner(System.in);
+            // Obtain a single letter from a user
+            System.out.println("Choose a letter!");
+            String userInput = scanner.nextLine();
+            int userLength = userInput.length();
 
-                String userInput = scanner.next();
-                int userLength = userInput.length();
+            // Loops until the user selects a String with a length of 1 (error)
+            while (userLength != 1) {
+                System.out.println("Please only choose one letter");
+                userInput = scanner.nextLine();
+                userLength = userInput.length();
+            }
 
-                // Loops until the user selects a String with a length of 1 (error)
-                while (userLength != 1) {
-                    System.out.println("Please only choose one letter");
-                    userInput = scanner.next();
-                    userLength = userInput.length();
-                }
-            // System.out.println("Play again? (y/n)");
+            // Search the array for the input
+            gamePhrase.searcher(userInput);
         }
+        
+        // See if they want to play again
+        if (gamePhrase.chances > 0) {
+            System.out.println("Congratulations!");
+        } else {
+            System.out.println("The sun sets heavy on this western town");
+        }
+
+        System.out.println("Play again? (y/n)");
+        String again = scanner.nextLine();
+        System.out.println("again = " + again);
+
+
+        scanner.close();
     }
 }
