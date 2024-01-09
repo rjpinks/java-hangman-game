@@ -40,15 +40,29 @@ public class Phrase {
     }
 
     void searcher(String target) {
+        System.out.println("SEARCHER ACTIVATED");
         boolean checker = false;
         for (int i = 0; i < this.splitPhrase.length; i++) {
-            if (target.toLowerCase() == this.splitPhrase[i].toLowerCase()) {
+            System.out.println("FOR ACTIVATED i =" + i + " target = " + target.toLowerCase() + " this.splitPhrase[i] = " + this.splitPhrase[i].toLowerCase());
+            if (target.toLowerCase().equals(this.splitPhrase[i].toLowerCase())) {
+                System.out.println("FIRST IF ACTIVATED  ");
+                StringBuilder stringBuilder = new StringBuilder();
                 checker = true;
-                splitCoded[i] = splitPhrase[i];
+                this.splitCoded[i] = this.splitPhrase[i];
+                // this.codedPhrase = String.join(this.codedPhrase);
+                    // This code returned an empty string bc 'it expects an iterable of strings, not a stingle string'
+
+                    // Use StringBuilder to make a new string
+                    for (String coded : this.splitCoded) {
+                    stringBuilder.append(coded);
+                }
+                this.codedPhrase = stringBuilder.toString();
+                System.out.println("codedPhrase = " + this.codedPhrase);
             }
-            if (checker == false) {
-                this.chances--;
-            }
+        }
+        if (checker == false) {
+            System.out.println("SECOND IF ACTIVATED");
+            this.chances--;
         }
     }
 
@@ -62,6 +76,8 @@ public class Phrase {
                 System.out.println("|");
                 System.out.println("|");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             // Adds head
             case 5:
@@ -71,6 +87,8 @@ public class Phrase {
                 System.out.println("|");
                 System.out.println("|");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             case 4:
                 System.out.println("_______");
@@ -79,6 +97,8 @@ public class Phrase {
                 System.out.println("|     |");
                 System.out.println("|");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             case 3:
                 System.out.println("_______");
@@ -87,6 +107,8 @@ public class Phrase {
                 System.out.println("|   --|");
                 System.out.println("|");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             case 2:
                 System.out.println("_______");
@@ -95,6 +117,8 @@ public class Phrase {
                 System.out.println("|   --|--");
                 System.out.println("|");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             case 1:
                 System.out.println("_______");
@@ -103,6 +127,8 @@ public class Phrase {
                 System.out.println("|   --|--");
                 System.out.println("|    /");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
             case 0:
                 System.out.println("_______");
@@ -111,6 +137,8 @@ public class Phrase {
                 System.out.println("|   --|--");
                 System.out.println("|    /\\");
                 System.out.println("|");
+                System.out.println("");
+                System.out.println(this.codedPhrase);
                 break;
         }
     }
