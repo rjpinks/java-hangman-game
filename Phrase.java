@@ -50,7 +50,8 @@ public class Phrase {
                 this.splitCoded[i] = this.splitPhrase[i];
 
                 // this.codedPhrase = String.join(this.codedPhrase);
-                    // This code returned an empty string bc 'it expects an iterable of strings, not a stingle string'
+                // This code returned an empty string bc 'it expects an iterable of strings, not
+                // a stingle string'
 
                 // Use StringBuilder to make a new string
                 for (String coded : this.splitCoded) {
@@ -128,16 +129,6 @@ public class Phrase {
                 System.out.println("");
                 System.out.println(this.codedPhrase);
                 break;
-            case 0:
-                System.out.println("_______");
-                System.out.println("|     |");
-                System.out.println("|     0 => What are my crimes!");
-                System.out.println("|   --|--");
-                System.out.println("|    / \\");
-                System.out.println("|");
-                System.out.println("");
-                System.out.println(this.codedPhrase);
-                break;
         }
     }
 
@@ -150,9 +141,9 @@ public class Phrase {
         if (phraseIndex % 2 == 1) {
             phraseIndex -= 1;
         }
-        this.phrase = possiblePhrases[phraseIndex];
 
         // Sets the variables at the top
+        this.phrase = possiblePhrases[phraseIndex];
         this.codedPhrase = possiblePhrases[phraseIndex + 1];
         this.splitter();
 
@@ -190,7 +181,6 @@ public class Phrase {
                 System.out.println("|    / \\");
                 System.out.println("|");
                 System.out.println("");
-                System.out.println(this.codedPhrase);
                 break;
             }
         }
@@ -199,6 +189,7 @@ public class Phrase {
             System.out.println(this.codedPhrase);
             System.out.println("Congratulations! You won!");
         } else {
+            System.out.println(this.codedPhrase);
             System.out.println("The sun sets heavy on this western town");
         }
     }
